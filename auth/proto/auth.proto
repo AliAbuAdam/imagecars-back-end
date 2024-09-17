@@ -1,0 +1,83 @@
+syntax="proto3";
+
+service AuthRpc {
+    rpc AuthWithEmail (SignInRequestDto) returns (TokensDto);
+    rpc RefreshToken (TokensDto) returns (TokensDto);
+    
+    rpc UpdateUser (UserDto) returns (UserDto);
+    rpc DeleteUser (RequestDto) returns (ResponseDto);
+    rpc FetchUser (RequestDto) returns (UserDto);
+    rpc FetchUserOnId (UserDto) returns (UserDto);
+    rpc FindUser (FindRequestDto) returns (UserDto);
+    rpc FetchUsers (FetchUsersRequestDto) returns (ListUserDto);
+    rpc FetchGMS (FetchGMSRequestDto) returns (ListUserDto);
+    
+    //  App Info
+    rpc FetchAppInfo(RequestDto) returns (AppInfoDto);
+}
+
+
+message ListUserDto {
+    repeated UserDto users = 1;
+}
+
+message FetchGMSRequestDto {
+    int32 group_key = 1;
+    string limit = 2;
+    string offset = 3;
+}
+
+
+message FetchUsersRequestDto {
+    repeated string user_ids = 1;
+}
+
+message FindRequestDto {
+    string id = 1;
+}
+
+enum Gender {
+    MAN = 0;
+    WOMAN = 1;
+}
+
+
+message UserDto {
+    // General
+    string id = 1;
+    string username = 2;
+    string email = 3;
+    string access_token = 4;
+    string refresh_token = 5;
+    optional Gender gender = 6;
+    optional string name = 7;
+    optional string phone = 8;
+    optional string telegram = 9;
+    optional string register_date = 10;
+    optional int32 group_id = 11;
+
+    // Private
+    optional string code_word = 12;
+}
+
+
+message TokensDto {
+    string access_token = 1;
+    string refresh_token = 2;
+}
+
+message RequestDto {}
+
+
+message SignInRequestDto {
+    string email = 1;
+}
+
+
+message ResponseDto {
+    string message = 1;
+}
+
+message AppInfoDto {
+    string last_version = 1;
+}
