@@ -127,19 +127,6 @@ services:
     volumes:
       - /etc/envoy/letsencrypt:/etc/envoy/letsencrypt:ro
 
-  files:
-    container_name: files
-    build: ./files
-    networks:
-      - server_net
-    environment:
-      SECRET_KEY: ${secret_key}
-      FILES_PORT: ${FILES_PORT}
-      FILES_ACCESS_KEY: ${FILES_ACCESS_KEY}
-      FILES_SECRET_KEY: ${FILES_SECRET_KEY}
-      FILES_USE_SSL: ${FILES_USE_SSL}
-      FILES_STORAGE_PORT: ${FILES_STORAGE_PORT}
-      FILES_STORAGE_HOST: ${FILES_STORAGE_HOST}
 
 volumes:
   db_auth_vol: {}
