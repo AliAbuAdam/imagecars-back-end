@@ -1,5 +1,7 @@
 import 'package:grpc/grpc.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
+import 'package:services/data/models/services/service.dart';
+import 'package:services/generated/services.pbgrpc.dart';
 import 'env.dart';
 
 abstract class Utils {
@@ -15,5 +17,30 @@ abstract class Utils {
   static int getIdFromMetadata(ServiceCall serviceCall) {
     final accessToken = serviceCall.clientMetadata?['token'] ?? '';
     return getIdFromToken(accessToken);
+  }
+
+  // Parse list service dto
+  static ListServiceDto parseListService(List<ServiceView> list) {
+    final services = list.map(
+      (view) => ServiceDto(
+        id: view.id.toString(),
+        title: view.title,
+        shortDescription: view.shortDescription,
+        description: view.description,
+        photos: view.photos,
+      ),
+    );
+    return ListServiceDto(services: services);
+  }
+
+  // Parse service dto
+  static ServiceDto parseService(ServiceView view) {
+    return ServiceDto(
+      id: view.id.toString(),
+      title: view.title,
+      shortDescription: view.shortDescription,
+      description: view.description,
+      photos: view.photos,
+    );
   }
 }
