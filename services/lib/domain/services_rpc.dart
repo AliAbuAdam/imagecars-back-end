@@ -2,6 +2,7 @@ import 'dart:isolate';
 
 import 'package:grpc/grpc.dart';
 import 'package:services/data/db.dart';
+import 'package:services/data/models/work_case/work_case.dart';
 import 'package:services/data/models/services/service.dart';
 import 'package:services/generated/services.pbgrpc.dart';
 
@@ -39,18 +40,32 @@ class ServicesRpc extends ServicesRpcServiceBase {
   }
 
   @override
-  Future<ListCasesDto> fetchAllCases(
-      ServiceCall call, RequestDto request) async {
-    // TODO: implement fetchAllCases
-    throw UnimplementedError();
+  Future<ListWorkCaseDto> fetchAllWorkCases(
+    ServiceCall call,
+    RequestDto request,
+  ) async {
+    final listWorkCaseView = await db.workCases.queryWorkCases();
+    if (listWorkCaseView.isEmpty) return ListWorkCaseDto(workCases: []);
+
+    final listWorkCaseDto =
+        await Isolate.run(() => Utils.parseListWorkCase(listWorkCaseView));
+
+    return listWorkCaseDto;
   }
 
   @override
-  Future<CaseDto> fetchCase(
+  Future<WorkCaseDto> fetchWorkCase(
     ServiceCall call,
-    CaseDto request,
+    WorkCaseDto request,
   ) async {
-    // TODO: implement fetchCase
-    throw UnimplementedError();
+    final workCaseId = int.tryParse(request.id);
+    if (workCaseId == null) {
+      throw GrpcError.invalidArgument('Work case id not found');
+    }
+    final workCaseView = await db.workCases.queryWorkCase(workCaseId);
+    if (workCaseView == null) {
+      throw GrpcError.notFound('Work case not found');
+    }
+    return await Isolate.run(() => Utils.parseWorkCase(workCaseView));
   }
 }

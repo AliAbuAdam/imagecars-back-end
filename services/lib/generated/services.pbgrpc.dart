@@ -29,14 +29,14 @@ class ServicesRpcClient extends $grpc.Client {
       '/ServicesRpc/FetchAllServices',
       ($0.RequestDto value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ListServiceDto.fromBuffer(value));
-  static final _$fetchCase = $grpc.ClientMethod<$0.CaseDto, $0.CaseDto>(
-      '/ServicesRpc/FetchCase',
-      ($0.CaseDto value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.CaseDto.fromBuffer(value));
-  static final _$fetchAllCases = $grpc.ClientMethod<$0.RequestDto, $0.ListCasesDto>(
-      '/ServicesRpc/FetchAllCases',
+  static final _$fetchWorkCase = $grpc.ClientMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+      '/ServicesRpc/FetchWorkCase',
+      ($0.WorkCaseDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value));
+  static final _$fetchAllWorkCases = $grpc.ClientMethod<$0.RequestDto, $0.ListWorkCaseDto>(
+      '/ServicesRpc/FetchAllWorkCases',
       ($0.RequestDto value) => value.writeToBuffer(),
-      ($core.List<$core.int> value) => $0.ListCasesDto.fromBuffer(value));
+      ($core.List<$core.int> value) => $0.ListWorkCaseDto.fromBuffer(value));
 
   ServicesRpcClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -52,12 +52,12 @@ class ServicesRpcClient extends $grpc.Client {
     return $createUnaryCall(_$fetchAllServices, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.CaseDto> fetchCase($0.CaseDto request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$fetchCase, request, options: options);
+  $grpc.ResponseFuture<$0.WorkCaseDto> fetchWorkCase($0.WorkCaseDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$fetchWorkCase, request, options: options);
   }
 
-  $grpc.ResponseFuture<$0.ListCasesDto> fetchAllCases($0.RequestDto request, {$grpc.CallOptions? options}) {
-    return $createUnaryCall(_$fetchAllCases, request, options: options);
+  $grpc.ResponseFuture<$0.ListWorkCaseDto> fetchAllWorkCases($0.RequestDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$fetchAllWorkCases, request, options: options);
   }
 }
 
@@ -80,20 +80,20 @@ abstract class ServicesRpcServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.RequestDto.fromBuffer(value),
         ($0.ListServiceDto value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.CaseDto, $0.CaseDto>(
-        'FetchCase',
-        fetchCase_Pre,
+    $addMethod($grpc.ServiceMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+        'FetchWorkCase',
+        fetchWorkCase_Pre,
         false,
         false,
-        ($core.List<$core.int> value) => $0.CaseDto.fromBuffer(value),
-        ($0.CaseDto value) => value.writeToBuffer()));
-    $addMethod($grpc.ServiceMethod<$0.RequestDto, $0.ListCasesDto>(
-        'FetchAllCases',
-        fetchAllCases_Pre,
+        ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value),
+        ($0.WorkCaseDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.RequestDto, $0.ListWorkCaseDto>(
+        'FetchAllWorkCases',
+        fetchAllWorkCases_Pre,
         false,
         false,
         ($core.List<$core.int> value) => $0.RequestDto.fromBuffer(value),
-        ($0.ListCasesDto value) => value.writeToBuffer()));
+        ($0.ListWorkCaseDto value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ServiceDto> fetchService_Pre($grpc.ServiceCall call, $async.Future<$0.ServiceDto> request) async {
@@ -104,16 +104,16 @@ abstract class ServicesRpcServiceBase extends $grpc.Service {
     return fetchAllServices(call, await request);
   }
 
-  $async.Future<$0.CaseDto> fetchCase_Pre($grpc.ServiceCall call, $async.Future<$0.CaseDto> request) async {
-    return fetchCase(call, await request);
+  $async.Future<$0.WorkCaseDto> fetchWorkCase_Pre($grpc.ServiceCall call, $async.Future<$0.WorkCaseDto> request) async {
+    return fetchWorkCase(call, await request);
   }
 
-  $async.Future<$0.ListCasesDto> fetchAllCases_Pre($grpc.ServiceCall call, $async.Future<$0.RequestDto> request) async {
-    return fetchAllCases(call, await request);
+  $async.Future<$0.ListWorkCaseDto> fetchAllWorkCases_Pre($grpc.ServiceCall call, $async.Future<$0.RequestDto> request) async {
+    return fetchAllWorkCases(call, await request);
   }
 
   $async.Future<$0.ServiceDto> fetchService($grpc.ServiceCall call, $0.ServiceDto request);
   $async.Future<$0.ListServiceDto> fetchAllServices($grpc.ServiceCall call, $0.RequestDto request);
-  $async.Future<$0.CaseDto> fetchCase($grpc.ServiceCall call, $0.CaseDto request);
-  $async.Future<$0.ListCasesDto> fetchAllCases($grpc.ServiceCall call, $0.RequestDto request);
+  $async.Future<$0.WorkCaseDto> fetchWorkCase($grpc.ServiceCall call, $0.WorkCaseDto request);
+  $async.Future<$0.ListWorkCaseDto> fetchAllWorkCases($grpc.ServiceCall call, $0.RequestDto request);
 }

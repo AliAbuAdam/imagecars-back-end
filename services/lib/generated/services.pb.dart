@@ -157,14 +157,16 @@ class ListServiceDto extends $pb.GeneratedMessage {
   $core.List<ServiceDto> get services => $_getList(0);
 }
 
-class CaseDto extends $pb.GeneratedMessage {
-  factory CaseDto({
+class WorkCaseDto extends $pb.GeneratedMessage {
+  factory WorkCaseDto({
     $core.String? id,
     $core.String? title,
     $core.String? carModel,
     $core.String? serviceId,
     $core.Iterable<$core.String>? photos,
     $core.String? video,
+    $core.String? description,
+    $core.String? masterName,
     $core.double? workHoures,
     $core.double? price,
   }) {
@@ -187,6 +189,12 @@ class CaseDto extends $pb.GeneratedMessage {
     if (video != null) {
       $result.video = video;
     }
+    if (description != null) {
+      $result.description = description;
+    }
+    if (masterName != null) {
+      $result.masterName = masterName;
+    }
     if (workHoures != null) {
       $result.workHoures = workHoures;
     }
@@ -195,19 +203,21 @@ class CaseDto extends $pb.GeneratedMessage {
     }
     return $result;
   }
-  CaseDto._() : super();
-  factory CaseDto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory CaseDto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  WorkCaseDto._() : super();
+  factory WorkCaseDto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory WorkCaseDto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'CaseDto', createEmptyInstance: create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'WorkCaseDto', createEmptyInstance: create)
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..aOS(3, _omitFieldNames ? '' : 'carModel')
     ..aOS(4, _omitFieldNames ? '' : 'serviceId')
     ..pPS(5, _omitFieldNames ? '' : 'photos')
     ..aOS(6, _omitFieldNames ? '' : 'video')
-    ..a<$core.double>(7, _omitFieldNames ? '' : 'workHoures', $pb.PbFieldType.OD)
-    ..a<$core.double>(8, _omitFieldNames ? '' : 'price', $pb.PbFieldType.OD)
+    ..aOS(7, _omitFieldNames ? '' : 'description')
+    ..aOS(8, _omitFieldNames ? '' : 'masterName')
+    ..a<$core.double>(9, _omitFieldNames ? '' : 'workHoures', $pb.PbFieldType.OD)
+    ..a<$core.double>(10, _omitFieldNames ? '' : 'price', $pb.PbFieldType.OD)
     ..hasRequiredFields = false
   ;
 
@@ -215,22 +225,22 @@ class CaseDto extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  CaseDto clone() => CaseDto()..mergeFromMessage(this);
+  WorkCaseDto clone() => WorkCaseDto()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  CaseDto copyWith(void Function(CaseDto) updates) => super.copyWith((message) => updates(message as CaseDto)) as CaseDto;
+  WorkCaseDto copyWith(void Function(WorkCaseDto) updates) => super.copyWith((message) => updates(message as WorkCaseDto)) as WorkCaseDto;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static CaseDto create() => CaseDto._();
-  CaseDto createEmptyInstance() => create();
-  static $pb.PbList<CaseDto> createRepeated() => $pb.PbList<CaseDto>();
+  static WorkCaseDto create() => WorkCaseDto._();
+  WorkCaseDto createEmptyInstance() => create();
+  static $pb.PbList<WorkCaseDto> createRepeated() => $pb.PbList<WorkCaseDto>();
   @$core.pragma('dart2js:noInline')
-  static CaseDto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<CaseDto>(create);
-  static CaseDto? _defaultInstance;
+  static WorkCaseDto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<WorkCaseDto>(create);
+  static WorkCaseDto? _defaultInstance;
 
   @$pb.TagNumber(1)
   $core.String get id => $_getSZ(0);
@@ -281,40 +291,58 @@ class CaseDto extends $pb.GeneratedMessage {
   void clearVideo() => clearField(6);
 
   @$pb.TagNumber(7)
-  $core.double get workHoures => $_getN(6);
+  $core.String get description => $_getSZ(6);
   @$pb.TagNumber(7)
-  set workHoures($core.double v) { $_setDouble(6, v); }
+  set description($core.String v) { $_setString(6, v); }
   @$pb.TagNumber(7)
-  $core.bool hasWorkHoures() => $_has(6);
+  $core.bool hasDescription() => $_has(6);
   @$pb.TagNumber(7)
-  void clearWorkHoures() => clearField(7);
+  void clearDescription() => clearField(7);
 
   @$pb.TagNumber(8)
-  $core.double get price => $_getN(7);
+  $core.String get masterName => $_getSZ(7);
   @$pb.TagNumber(8)
-  set price($core.double v) { $_setDouble(7, v); }
+  set masterName($core.String v) { $_setString(7, v); }
   @$pb.TagNumber(8)
-  $core.bool hasPrice() => $_has(7);
+  $core.bool hasMasterName() => $_has(7);
   @$pb.TagNumber(8)
-  void clearPrice() => clearField(8);
+  void clearMasterName() => clearField(8);
+
+  @$pb.TagNumber(9)
+  $core.double get workHoures => $_getN(8);
+  @$pb.TagNumber(9)
+  set workHoures($core.double v) { $_setDouble(8, v); }
+  @$pb.TagNumber(9)
+  $core.bool hasWorkHoures() => $_has(8);
+  @$pb.TagNumber(9)
+  void clearWorkHoures() => clearField(9);
+
+  @$pb.TagNumber(10)
+  $core.double get price => $_getN(9);
+  @$pb.TagNumber(10)
+  set price($core.double v) { $_setDouble(9, v); }
+  @$pb.TagNumber(10)
+  $core.bool hasPrice() => $_has(9);
+  @$pb.TagNumber(10)
+  void clearPrice() => clearField(10);
 }
 
-class ListCasesDto extends $pb.GeneratedMessage {
-  factory ListCasesDto({
-    $core.Iterable<CaseDto>? cases,
+class ListWorkCaseDto extends $pb.GeneratedMessage {
+  factory ListWorkCaseDto({
+    $core.Iterable<WorkCaseDto>? workCases,
   }) {
     final $result = create();
-    if (cases != null) {
-      $result.cases.addAll(cases);
+    if (workCases != null) {
+      $result.workCases.addAll(workCases);
     }
     return $result;
   }
-  ListCasesDto._() : super();
-  factory ListCasesDto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
-  factory ListCasesDto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+  ListWorkCaseDto._() : super();
+  factory ListWorkCaseDto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory ListWorkCaseDto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
 
-  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListCasesDto', createEmptyInstance: create)
-    ..pc<CaseDto>(1, _omitFieldNames ? '' : 'cases', $pb.PbFieldType.PM, subBuilder: CaseDto.create)
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'ListWorkCaseDto', createEmptyInstance: create)
+    ..pc<WorkCaseDto>(1, _omitFieldNames ? '' : 'workCases', $pb.PbFieldType.PM, subBuilder: WorkCaseDto.create)
     ..hasRequiredFields = false
   ;
 
@@ -322,25 +350,25 @@ class ListCasesDto extends $pb.GeneratedMessage {
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
   'Will be removed in next major version')
-  ListCasesDto clone() => ListCasesDto()..mergeFromMessage(this);
+  ListWorkCaseDto clone() => ListWorkCaseDto()..mergeFromMessage(this);
   @$core.Deprecated(
   'Using this can add significant overhead to your binary. '
   'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
   'Will be removed in next major version')
-  ListCasesDto copyWith(void Function(ListCasesDto) updates) => super.copyWith((message) => updates(message as ListCasesDto)) as ListCasesDto;
+  ListWorkCaseDto copyWith(void Function(ListWorkCaseDto) updates) => super.copyWith((message) => updates(message as ListWorkCaseDto)) as ListWorkCaseDto;
 
   $pb.BuilderInfo get info_ => _i;
 
   @$core.pragma('dart2js:noInline')
-  static ListCasesDto create() => ListCasesDto._();
-  ListCasesDto createEmptyInstance() => create();
-  static $pb.PbList<ListCasesDto> createRepeated() => $pb.PbList<ListCasesDto>();
+  static ListWorkCaseDto create() => ListWorkCaseDto._();
+  ListWorkCaseDto createEmptyInstance() => create();
+  static $pb.PbList<ListWorkCaseDto> createRepeated() => $pb.PbList<ListWorkCaseDto>();
   @$core.pragma('dart2js:noInline')
-  static ListCasesDto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListCasesDto>(create);
-  static ListCasesDto? _defaultInstance;
+  static ListWorkCaseDto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<ListWorkCaseDto>(create);
+  static ListWorkCaseDto? _defaultInstance;
 
   @$pb.TagNumber(1)
-  $core.List<CaseDto> get cases => $_getList(0);
+  $core.List<WorkCaseDto> get workCases => $_getList(0);
 }
 
 class RequestDto extends $pb.GeneratedMessage {
