@@ -62,7 +62,7 @@ abstract class Utils {
       vinCode: view.vinCode,
       yearOfManufacture: view.yearOfManufacture,
       gosNumber: view.gosNumber,
-      serviceLogs: parseListUserServiceLog(view.serviceLogs),
+      // serviceLogs: parseListUserServiceLog(view.serviceLogs),
       preferences: view.preferences,
     );
   }
@@ -84,7 +84,7 @@ abstract class Utils {
         vinCode: view.vinCode,
         yearOfManufacture: view.yearOfManufacture,
         gosNumber: view.gosNumber,
-        serviceLogs: parseListUserServiceLog(view.serviceLogs),
+        // serviceLogs: parseListUserServiceLog(view.serviceLogs),
         preferences: view.preferences,
       );
 
@@ -113,7 +113,7 @@ abstract class Utils {
             vinCode: view.vinCode,
             yearOfManufacture: view.yearOfManufacture,
             gosNumber: view.gosNumber,
-            serviceLogs: parseListUserServiceLog(view.serviceLogs),
+            // serviceLogs: parseListUserServiceLog(view.serviceLogs),
             preferences: view.preferences,
           ),
         )

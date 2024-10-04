@@ -41,8 +41,8 @@ class _UserServiceLogRepository extends BaseRepository
     if (requests.isEmpty) return [];
     var values = QueryValues();
     var rows = await db.query(
-      'INSERT INTO "user_service_logs" ( "date", "service_id", "price" )\n'
-      'VALUES ${requests.map((r) => '( ${values.add(r.date)}:text, ${values.add(r.serviceId)}:text, ${values.add(r.price)}:float8 )').join(', ')}\n'
+      'INSERT INTO "user_service_logs" ( "date", "service_id", "price", "user_id" )\n'
+      'VALUES ${requests.map((r) => '( ${values.add(r.date)}:text, ${values.add(r.serviceId)}:text, ${values.add(r.price)}:float8, ${values.add(r.userId)}:int8 )').join(', ')}\n'
       'RETURNING "id"',
       values.values,
     );
@@ -57,9 +57,9 @@ class _UserServiceLogRepository extends BaseRepository
     var values = QueryValues();
     await db.query(
       'UPDATE "user_service_logs"\n'
-      'SET "date" = COALESCE(UPDATED."date", "user_service_logs"."date"), "service_id" = COALESCE(UPDATED."service_id", "user_service_logs"."service_id"), "price" = COALESCE(UPDATED."price", "user_service_logs"."price")\n'
-      'FROM ( VALUES ${requests.map((r) => '( ${values.add(r.id)}:int8::int8, ${values.add(r.date)}:text::text, ${values.add(r.serviceId)}:text::text, ${values.add(r.price)}:float8::float8 )').join(', ')} )\n'
-      'AS UPDATED("id", "date", "service_id", "price")\n'
+      'SET "date" = COALESCE(UPDATED."date", "user_service_logs"."date"), "service_id" = COALESCE(UPDATED."service_id", "user_service_logs"."service_id"), "price" = COALESCE(UPDATED."price", "user_service_logs"."price"), "user_id" = COALESCE(UPDATED."user_id", "user_service_logs"."user_id")\n'
+      'FROM ( VALUES ${requests.map((r) => '( ${values.add(r.id)}:int8::int8, ${values.add(r.date)}:text::text, ${values.add(r.serviceId)}:text::text, ${values.add(r.price)}:float8::float8, ${values.add(r.userId)}:int8::int8 )').join(', ')} )\n'
+      'AS UPDATED("id", "date", "service_id", "price", "user_id")\n'
       'WHERE "user_service_logs"."id" = UPDATED."id"',
       values.values,
     );
@@ -71,11 +71,13 @@ class UserServiceLogInsertRequest {
     required this.date,
     required this.serviceId,
     required this.price,
+    this.userId,
   });
 
   final String date;
   final String serviceId;
   final double price;
+  final int? userId;
 }
 
 class UserServiceLogUpdateRequest {
@@ -84,12 +86,14 @@ class UserServiceLogUpdateRequest {
     this.date,
     this.serviceId,
     this.price,
+    this.userId,
   });
 
   final int id;
   final String? date;
   final String? serviceId;
   final double? price;
+  final int? userId;
 }
 
 class UserServiceLogViewQueryable extends KeyedViewQueryable<UserServiceLogView, int> {

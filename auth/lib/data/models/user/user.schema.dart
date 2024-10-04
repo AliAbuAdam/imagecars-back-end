@@ -160,15 +160,8 @@ class ShortUserViewQueryable extends KeyedViewQueryable<ShortUserView, int> {
   String encodeKey(int key) => TextEncoder.i.encode(key);
 
   @override
-  String get query => 'SELECT "users".*, "serviceLogs"."data" as "serviceLogs"'
-      'FROM "users"'
-      'LEFT JOIN ('
-      '  SELECT "user_service_logs"."user_id",'
-      '    to_jsonb(array_agg("user_service_logs".*)) as data'
-      '  FROM (${UserServiceLogViewQueryable().query}) "user_service_logs"'
-      '  GROUP BY "user_service_logs"."user_id"'
-      ') "serviceLogs"'
-      'ON "users"."id" = "serviceLogs"."user_id"';
+  String get query => 'SELECT "users".*'
+      'FROM "users"';
 
   @override
   String get tableAlias => 'users';
@@ -182,7 +175,6 @@ class ShortUserViewQueryable extends KeyedViewQueryable<ShortUserView, int> {
       vinCode: map.getOpt('vin_code'),
       yearOfManufacture: map.getOpt('year_of_manufacture'),
       gosNumber: map.getOpt('gos_number'),
-      serviceLogs: map.getListOpt('serviceLogs', UserServiceLogViewQueryable().decoder),
       preferences: map.getOpt('preferences'),
       email: map.get('email'),
       gender: map.getOpt('gender'),
@@ -203,7 +195,6 @@ class ShortUserView {
     this.vinCode,
     this.yearOfManufacture,
     this.gosNumber,
-    this.serviceLogs,
     this.preferences,
     required this.email,
     this.gender,
@@ -222,7 +213,6 @@ class ShortUserView {
   final String? vinCode;
   final int? yearOfManufacture;
   final String? gosNumber;
-  final List<UserServiceLogView>? serviceLogs;
   final String? preferences;
   final String email;
   final String? gender;
@@ -242,15 +232,8 @@ class FullUserViewQueryable extends KeyedViewQueryable<FullUserView, int> {
   String encodeKey(int key) => TextEncoder.i.encode(key);
 
   @override
-  String get query => 'SELECT "users".*, "serviceLogs"."data" as "serviceLogs"'
-      'FROM "users"'
-      'LEFT JOIN ('
-      '  SELECT "user_service_logs"."user_id",'
-      '    to_jsonb(array_agg("user_service_logs".*)) as data'
-      '  FROM (${UserServiceLogViewQueryable().query}) "user_service_logs"'
-      '  GROUP BY "user_service_logs"."user_id"'
-      ') "serviceLogs"'
-      'ON "users"."id" = "serviceLogs"."user_id"';
+  String get query => 'SELECT "users".*'
+      'FROM "users"';
 
   @override
   String get tableAlias => 'users';
@@ -264,7 +247,6 @@ class FullUserViewQueryable extends KeyedViewQueryable<FullUserView, int> {
       vinCode: map.getOpt('vin_code'),
       yearOfManufacture: map.getOpt('year_of_manufacture'),
       gosNumber: map.getOpt('gos_number'),
-      serviceLogs: map.getListOpt('serviceLogs', UserServiceLogViewQueryable().decoder),
       preferences: map.getOpt('preferences'),
       email: map.get('email'),
       gender: map.getOpt('gender'),
@@ -285,7 +267,6 @@ class FullUserView {
     this.vinCode,
     this.yearOfManufacture,
     this.gosNumber,
-    this.serviceLogs,
     this.preferences,
     required this.email,
     this.gender,
@@ -304,7 +285,6 @@ class FullUserView {
   final String? vinCode;
   final int? yearOfManufacture;
   final String? gosNumber;
-  final List<UserServiceLogView>? serviceLogs;
   final String? preferences;
   final String email;
   final String? gender;

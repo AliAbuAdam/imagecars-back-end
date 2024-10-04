@@ -97,7 +97,6 @@ const UserDto$json = {
     {'1': 'vin_code', '3': 15, '4': 1, '5': 9, '10': 'vinCode'},
     {'1': 'year_of_manufacture', '3': 16, '4': 1, '5': 5, '10': 'yearOfManufacture'},
     {'1': 'gos_number', '3': 17, '4': 1, '5': 9, '10': 'gosNumber'},
-    {'1': 'service_logs', '3': 18, '4': 3, '5': 11, '6': '.UserServiceLogDto', '10': 'serviceLogs'},
     {'1': 'preferences', '3': 19, '4': 1, '5': 9, '10': 'preferences'},
     {'1': 'code_word', '3': 20, '4': 1, '5': 9, '9': 6, '10': 'codeWord', '17': true},
   ],
@@ -123,10 +122,9 @@ final $typed_data.Uint8List userDtoDescriptor = $convert.base64Decode(
     'B2dyb3VwSWSIAQESFAoFY29pbnMYDSABKAFSBWNvaW5zEhsKCWNhcl9tb2RlbBgOIAEoCVIIY2'
     'FyTW9kZWwSGQoIdmluX2NvZGUYDyABKAlSB3ZpbkNvZGUSLgoTeWVhcl9vZl9tYW51ZmFjdHVy'
     'ZRgQIAEoBVIReWVhck9mTWFudWZhY3R1cmUSHQoKZ29zX251bWJlchgRIAEoCVIJZ29zTnVtYm'
-    'VyEjUKDHNlcnZpY2VfbG9ncxgSIAMoCzISLlVzZXJTZXJ2aWNlTG9nRHRvUgtzZXJ2aWNlTG9n'
-    'cxIgCgtwcmVmZXJlbmNlcxgTIAEoCVILcHJlZmVyZW5jZXMSIAoJY29kZV93b3JkGBQgASgJSA'
-    'ZSCGNvZGVXb3JkiAEBQgkKB19nZW5kZXJCBwoFX25hbWVCCAoGX3Bob25lQgsKCV90ZWxlZ3Jh'
-    'bUIQCg5fcmVnaXN0ZXJfZGF0ZUILCglfZ3JvdXBfaWRCDAoKX2NvZGVfd29yZA==');
+    'VyEiAKC3ByZWZlcmVuY2VzGBMgASgJUgtwcmVmZXJlbmNlcxIgCgljb2RlX3dvcmQYFCABKAlI'
+    'BlIIY29kZVdvcmSIAQFCCQoHX2dlbmRlckIHCgVfbmFtZUIICgZfcGhvbmVCCwoJX3RlbGVncm'
+    'FtQhAKDl9yZWdpc3Rlcl9kYXRlQgsKCV9ncm91cF9pZEIMCgpfY29kZV93b3Jk');
 
 @$core.Deprecated('Use tokensDtoDescriptor instead')
 const TokensDto$json = {

@@ -251,7 +251,6 @@ class UserDto extends $pb.GeneratedMessage {
     $core.String? vinCode,
     $core.int? yearOfManufacture,
     $core.String? gosNumber,
-    $core.Iterable<UserServiceLogDto>? serviceLogs,
     $core.String? preferences,
     $core.String? codeWord,
   }) {
@@ -304,9 +303,6 @@ class UserDto extends $pb.GeneratedMessage {
     if (gosNumber != null) {
       $result.gosNumber = gosNumber;
     }
-    if (serviceLogs != null) {
-      $result.serviceLogs.addAll(serviceLogs);
-    }
     if (preferences != null) {
       $result.preferences = preferences;
     }
@@ -336,7 +332,6 @@ class UserDto extends $pb.GeneratedMessage {
     ..aOS(15, _omitFieldNames ? '' : 'vinCode')
     ..a<$core.int>(16, _omitFieldNames ? '' : 'yearOfManufacture', $pb.PbFieldType.O3)
     ..aOS(17, _omitFieldNames ? '' : 'gosNumber')
-    ..pc<UserServiceLogDto>(18, _omitFieldNames ? '' : 'serviceLogs', $pb.PbFieldType.PM, subBuilder: UserServiceLogDto.create)
     ..aOS(19, _omitFieldNames ? '' : 'preferences')
     ..aOS(20, _omitFieldNames ? '' : 'codeWord')
     ..hasRequiredFields = false
@@ -508,25 +503,23 @@ class UserDto extends $pb.GeneratedMessage {
   @$pb.TagNumber(17)
   void clearGosNumber() => clearField(17);
 
-  @$pb.TagNumber(18)
-  $core.List<UserServiceLogDto> get serviceLogs => $_getList(16);
-
+  /// repeated UserServiceLogDto service_logs = 18;
   @$pb.TagNumber(19)
-  $core.String get preferences => $_getSZ(17);
+  $core.String get preferences => $_getSZ(16);
   @$pb.TagNumber(19)
-  set preferences($core.String v) { $_setString(17, v); }
+  set preferences($core.String v) { $_setString(16, v); }
   @$pb.TagNumber(19)
-  $core.bool hasPreferences() => $_has(17);
+  $core.bool hasPreferences() => $_has(16);
   @$pb.TagNumber(19)
   void clearPreferences() => clearField(19);
 
   /// Private
   @$pb.TagNumber(20)
-  $core.String get codeWord => $_getSZ(18);
+  $core.String get codeWord => $_getSZ(17);
   @$pb.TagNumber(20)
-  set codeWord($core.String v) { $_setString(18, v); }
+  set codeWord($core.String v) { $_setString(17, v); }
   @$pb.TagNumber(20)
-  $core.bool hasCodeWord() => $_has(18);
+  $core.bool hasCodeWord() => $_has(17);
   @$pb.TagNumber(20)
   void clearCodeWord() => clearField(20);
 }

@@ -1,6 +1,4 @@
 import 'package:stormberry/stormberry.dart';
-
-import '../service_log/user_service_log.dart';
 part 'user.schema.dart';
 
 @Model(
@@ -29,6 +27,6 @@ abstract class User {
   String? get vinCode;
   int? get yearOfManufacture;
   String? get gosNumber;
-  List<UserServiceLog>? get serviceLogs;
+  // List<UserServiceLog>? get serviceLogs;
   String? get preferences;
 }
