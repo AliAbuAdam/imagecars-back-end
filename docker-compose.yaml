@@ -38,43 +38,6 @@ services:
       - server_net
 
 
-  progress_manager:
-    container_name: progress_manager
-    build: ./progress_manager
-    depends_on:
-      - db_progress_manager
-    networks:
-      - server_net
-    environment:
-      PORT: ${progress_manager_port}
-      SECRET_KEY: ${secret_key}
-      DB_HOST_ADDRESS: db_progress_manager
-      DB_PORT: ${db_port_progress_manager}
-      DB_USERNAME: ${db_user_progress_manager}
-      DB_PASSWORD: ${db_password_progress_manager}
-      DB_SSL: ${db_use_ssl}
-      SERVICES_PORT: ${services_port}
-      TZ: ${container_timezone}
-  
-  db_progress_manager:
-    container_name: db_progress_manager
-    ports:
-      - ${db_port_progress_manager}:${db_port_progress_manager}
-    environment:
-      POSTGRES_USER: ${db_user_progress_manager}
-      POSTGRES_PASSWORD: ${db_password_progress_manager}
-      TZ: ${container_timezone}
-    image: postgres:15-alpine
-    command:
-      - 'postgres'
-      - '-c'
-      - 'port=${db_port_progress_manager}'
-    volumes:
-      - db_progress_manager_vol:/var/lib/postgresql/data
-    networks:
-      - server_net
-
-
   services:
     container_name: services
     build: ./services
@@ -118,7 +81,6 @@ services:
     depends_on:
       - auth
       - services
-      - progress_manager
     networks:
       - server_net
     build: ./envoy
@@ -129,7 +91,6 @@ services:
 volumes:
   db_auth_vol: {}
   db_services_vol: {}
-  db_progress_manager_vol: {}
 networks:
   server_net:
     driver: bridge

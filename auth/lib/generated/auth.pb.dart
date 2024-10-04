@@ -246,6 +246,13 @@ class UserDto extends $pb.GeneratedMessage {
     $core.String? telegram,
     $core.String? registerDate,
     $core.int? groupId,
+    $core.double? coins,
+    $core.String? carModel,
+    $core.String? vinCode,
+    $core.int? yearOfManufacture,
+    $core.String? gosNumber,
+    $core.Iterable<UserServiceLogDto>? serviceLogs,
+    $core.String? preferences,
     $core.String? codeWord,
   }) {
     final $result = create();
@@ -282,6 +289,27 @@ class UserDto extends $pb.GeneratedMessage {
     if (groupId != null) {
       $result.groupId = groupId;
     }
+    if (coins != null) {
+      $result.coins = coins;
+    }
+    if (carModel != null) {
+      $result.carModel = carModel;
+    }
+    if (vinCode != null) {
+      $result.vinCode = vinCode;
+    }
+    if (yearOfManufacture != null) {
+      $result.yearOfManufacture = yearOfManufacture;
+    }
+    if (gosNumber != null) {
+      $result.gosNumber = gosNumber;
+    }
+    if (serviceLogs != null) {
+      $result.serviceLogs.addAll(serviceLogs);
+    }
+    if (preferences != null) {
+      $result.preferences = preferences;
+    }
     if (codeWord != null) {
       $result.codeWord = codeWord;
     }
@@ -303,7 +331,14 @@ class UserDto extends $pb.GeneratedMessage {
     ..aOS(9, _omitFieldNames ? '' : 'telegram')
     ..aOS(10, _omitFieldNames ? '' : 'registerDate')
     ..a<$core.int>(11, _omitFieldNames ? '' : 'groupId', $pb.PbFieldType.O3)
-    ..aOS(12, _omitFieldNames ? '' : 'codeWord')
+    ..a<$core.double>(13, _omitFieldNames ? '' : 'coins', $pb.PbFieldType.OD)
+    ..aOS(14, _omitFieldNames ? '' : 'carModel')
+    ..aOS(15, _omitFieldNames ? '' : 'vinCode')
+    ..a<$core.int>(16, _omitFieldNames ? '' : 'yearOfManufacture', $pb.PbFieldType.O3)
+    ..aOS(17, _omitFieldNames ? '' : 'gosNumber')
+    ..pc<UserServiceLogDto>(18, _omitFieldNames ? '' : 'serviceLogs', $pb.PbFieldType.PM, subBuilder: UserServiceLogDto.create)
+    ..aOS(19, _omitFieldNames ? '' : 'preferences')
+    ..aOS(20, _omitFieldNames ? '' : 'codeWord')
     ..hasRequiredFields = false
   ;
 
@@ -428,15 +463,72 @@ class UserDto extends $pb.GeneratedMessage {
   @$pb.TagNumber(11)
   void clearGroupId() => clearField(11);
 
+  @$pb.TagNumber(13)
+  $core.double get coins => $_getN(11);
+  @$pb.TagNumber(13)
+  set coins($core.double v) { $_setDouble(11, v); }
+  @$pb.TagNumber(13)
+  $core.bool hasCoins() => $_has(11);
+  @$pb.TagNumber(13)
+  void clearCoins() => clearField(13);
+
+  @$pb.TagNumber(14)
+  $core.String get carModel => $_getSZ(12);
+  @$pb.TagNumber(14)
+  set carModel($core.String v) { $_setString(12, v); }
+  @$pb.TagNumber(14)
+  $core.bool hasCarModel() => $_has(12);
+  @$pb.TagNumber(14)
+  void clearCarModel() => clearField(14);
+
+  @$pb.TagNumber(15)
+  $core.String get vinCode => $_getSZ(13);
+  @$pb.TagNumber(15)
+  set vinCode($core.String v) { $_setString(13, v); }
+  @$pb.TagNumber(15)
+  $core.bool hasVinCode() => $_has(13);
+  @$pb.TagNumber(15)
+  void clearVinCode() => clearField(15);
+
+  @$pb.TagNumber(16)
+  $core.int get yearOfManufacture => $_getIZ(14);
+  @$pb.TagNumber(16)
+  set yearOfManufacture($core.int v) { $_setSignedInt32(14, v); }
+  @$pb.TagNumber(16)
+  $core.bool hasYearOfManufacture() => $_has(14);
+  @$pb.TagNumber(16)
+  void clearYearOfManufacture() => clearField(16);
+
+  @$pb.TagNumber(17)
+  $core.String get gosNumber => $_getSZ(15);
+  @$pb.TagNumber(17)
+  set gosNumber($core.String v) { $_setString(15, v); }
+  @$pb.TagNumber(17)
+  $core.bool hasGosNumber() => $_has(15);
+  @$pb.TagNumber(17)
+  void clearGosNumber() => clearField(17);
+
+  @$pb.TagNumber(18)
+  $core.List<UserServiceLogDto> get serviceLogs => $_getList(16);
+
+  @$pb.TagNumber(19)
+  $core.String get preferences => $_getSZ(17);
+  @$pb.TagNumber(19)
+  set preferences($core.String v) { $_setString(17, v); }
+  @$pb.TagNumber(19)
+  $core.bool hasPreferences() => $_has(17);
+  @$pb.TagNumber(19)
+  void clearPreferences() => clearField(19);
+
   /// Private
-  @$pb.TagNumber(12)
-  $core.String get codeWord => $_getSZ(11);
-  @$pb.TagNumber(12)
-  set codeWord($core.String v) { $_setString(11, v); }
-  @$pb.TagNumber(12)
-  $core.bool hasCodeWord() => $_has(11);
-  @$pb.TagNumber(12)
-  void clearCodeWord() => clearField(12);
+  @$pb.TagNumber(20)
+  $core.String get codeWord => $_getSZ(18);
+  @$pb.TagNumber(20)
+  set codeWord($core.String v) { $_setString(18, v); }
+  @$pb.TagNumber(20)
+  $core.bool hasCodeWord() => $_has(18);
+  @$pb.TagNumber(20)
+  void clearCodeWord() => clearField(20);
 }
 
 class TokensDto extends $pb.GeneratedMessage {
@@ -683,6 +775,98 @@ class AppInfoDto extends $pb.GeneratedMessage {
   $core.bool hasLastVersion() => $_has(0);
   @$pb.TagNumber(1)
   void clearLastVersion() => clearField(1);
+}
+
+class UserServiceLogDto extends $pb.GeneratedMessage {
+  factory UserServiceLogDto({
+    $core.String? id,
+    $core.String? date,
+    $core.String? serviceId,
+    $core.double? price,
+  }) {
+    final $result = create();
+    if (id != null) {
+      $result.id = id;
+    }
+    if (date != null) {
+      $result.date = date;
+    }
+    if (serviceId != null) {
+      $result.serviceId = serviceId;
+    }
+    if (price != null) {
+      $result.price = price;
+    }
+    return $result;
+  }
+  UserServiceLogDto._() : super();
+  factory UserServiceLogDto.fromBuffer($core.List<$core.int> i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromBuffer(i, r);
+  factory UserServiceLogDto.fromJson($core.String i, [$pb.ExtensionRegistry r = $pb.ExtensionRegistry.EMPTY]) => create()..mergeFromJson(i, r);
+
+  static final $pb.BuilderInfo _i = $pb.BuilderInfo(_omitMessageNames ? '' : 'UserServiceLogDto', createEmptyInstance: create)
+    ..aOS(1, _omitFieldNames ? '' : 'id')
+    ..aOS(2, _omitFieldNames ? '' : 'date')
+    ..aOS(3, _omitFieldNames ? '' : 'serviceId')
+    ..a<$core.double>(4, _omitFieldNames ? '' : 'price', $pb.PbFieldType.OD)
+    ..hasRequiredFields = false
+  ;
+
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.deepCopy] instead. '
+  'Will be removed in next major version')
+  UserServiceLogDto clone() => UserServiceLogDto()..mergeFromMessage(this);
+  @$core.Deprecated(
+  'Using this can add significant overhead to your binary. '
+  'Use [GeneratedMessageGenericExtensions.rebuild] instead. '
+  'Will be removed in next major version')
+  UserServiceLogDto copyWith(void Function(UserServiceLogDto) updates) => super.copyWith((message) => updates(message as UserServiceLogDto)) as UserServiceLogDto;
+
+  $pb.BuilderInfo get info_ => _i;
+
+  @$core.pragma('dart2js:noInline')
+  static UserServiceLogDto create() => UserServiceLogDto._();
+  UserServiceLogDto createEmptyInstance() => create();
+  static $pb.PbList<UserServiceLogDto> createRepeated() => $pb.PbList<UserServiceLogDto>();
+  @$core.pragma('dart2js:noInline')
+  static UserServiceLogDto getDefault() => _defaultInstance ??= $pb.GeneratedMessage.$_defaultFor<UserServiceLogDto>(create);
+  static UserServiceLogDto? _defaultInstance;
+
+  @$pb.TagNumber(1)
+  $core.String get id => $_getSZ(0);
+  @$pb.TagNumber(1)
+  set id($core.String v) { $_setString(0, v); }
+  @$pb.TagNumber(1)
+  $core.bool hasId() => $_has(0);
+  @$pb.TagNumber(1)
+  void clearId() => clearField(1);
+
+  @$pb.TagNumber(2)
+  $core.String get date => $_getSZ(1);
+  @$pb.TagNumber(2)
+  set date($core.String v) { $_setString(1, v); }
+  @$pb.TagNumber(2)
+  $core.bool hasDate() => $_has(1);
+  @$pb.TagNumber(2)
+  void clearDate() => clearField(2);
+
+  @$pb.TagNumber(3)
+  $core.String get serviceId => $_getSZ(2);
+  @$pb.TagNumber(3)
+  set serviceId($core.String v) { $_setString(2, v); }
+  @$pb.TagNumber(3)
+  $core.bool hasServiceId() => $_has(2);
+  @$pb.TagNumber(3)
+  void clearServiceId() => clearField(3);
+
+  @$pb.TagNumber(4)
+  $core.double get price => $_getN(3);
+  @$pb.TagNumber(4)
+  set price($core.double v) { $_setDouble(3, v); }
+  @$pb.TagNumber(4)
+  $core.bool hasPrice() => $_has(3);
+  @$pb.TagNumber(4)
+  void clearPrice() => clearField(4);
 }
 
 

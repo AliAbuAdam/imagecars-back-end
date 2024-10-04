@@ -28,12 +28,6 @@ static_resources:
                             timeout: 6s
                             max_stream_duration:
                               grpc_timeout_header_max: 0s
-                        - match: { prefix: "/ProgressManagerRpc/" }
-                          route:
-                            cluster: cluster_progress_manager
-                            timeout: 6s
-                            max_stream_duration:
-                              grpc_timeout_header_max: 0s
 
                       # CORS #
                       cors:
@@ -96,18 +90,3 @@ static_resources:
                     socket_address:
                       address: services
                       port_value: 4404
-
-    - name: cluster_progress_manager
-      connect_timeout: 0.25s
-      type: logical_dns
-      http2_protocol_options: {}
-      lb_policy: round_robin
-      load_assignment:
-        cluster_name: cluster_progress_manager
-        endpoints:
-          - lb_endpoints:
-              - endpoint:
-                  address:
-                    socket_address:
-                      address: progress_manager
-                      port_value: 4407

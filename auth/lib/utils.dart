@@ -7,6 +7,8 @@ import 'package:encrypt/encrypt.dart';
 import 'package:grpc/grpc.dart';
 import 'package:jaguar_jwt/jaguar_jwt.dart';
 
+import 'data/models/service_log/user_service_log.dart';
+
 abstract class Utils {
   // Хэширования пароля
   static String getHashPassword(String password) {
@@ -55,6 +57,13 @@ abstract class Utils {
       telegram: view.telegram,
       phone: view.phone,
       codeWord: view.codeWord,
+      coins: view.coins,
+      carModel: view.carModel,
+      vinCode: view.vinCode,
+      yearOfManufacture: view.yearOfManufacture,
+      gosNumber: view.gosNumber,
+      serviceLogs: parseListUserServiceLog(view.serviceLogs),
+      preferences: view.preferences,
     );
   }
 
@@ -70,6 +79,13 @@ abstract class Utils {
         registerDate: view.registerDate,
         telegram: view.telegram,
         phone: view.phone,
+        coins: view.coins,
+        carModel: view.carModel,
+        vinCode: view.vinCode,
+        yearOfManufacture: view.yearOfManufacture,
+        gosNumber: view.gosNumber,
+        serviceLogs: parseListUserServiceLog(view.serviceLogs),
+        preferences: view.preferences,
       );
 
   // Конвертация в ListUserDto
@@ -92,11 +108,43 @@ abstract class Utils {
             telegram: view.telegram,
             phone: view.phone,
             codeWord: view.codeWord,
+            coins: view.coins,
+            carModel: view.carModel,
+            vinCode: view.vinCode,
+            yearOfManufacture: view.yearOfManufacture,
+            gosNumber: view.gosNumber,
+            serviceLogs: parseListUserServiceLog(view.serviceLogs),
+            preferences: view.preferences,
           ),
         )
       ]);
     } catch (e) {
       throw GrpcError.internal('Error in parseUsers ${e.toString()}');
     }
+  }
+
+  static UserServiceLogDto parseUserServiceLog(UserServiceLogView view) {
+    return UserServiceLogDto(
+      id: view.id.toString(),
+      date: view.date,
+      serviceId: view.serviceId,
+      price: view.price,
+    );
+  }
+
+  static List<UserServiceLogDto> parseListUserServiceLog(
+    List<UserServiceLogView>? list,
+  ) {
+    if (list == null) return [];
+    return list
+        .map(
+          (view) => UserServiceLogDto(
+            id: view.id.toString(),
+            date: view.date,
+            serviceId: view.serviceId,
+            price: view.price,
+          ),
+        )
+        .toList();
   }
 }

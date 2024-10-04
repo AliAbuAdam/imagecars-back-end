@@ -92,7 +92,14 @@ const UserDto$json = {
     {'1': 'telegram', '3': 9, '4': 1, '5': 9, '9': 3, '10': 'telegram', '17': true},
     {'1': 'register_date', '3': 10, '4': 1, '5': 9, '9': 4, '10': 'registerDate', '17': true},
     {'1': 'group_id', '3': 11, '4': 1, '5': 5, '9': 5, '10': 'groupId', '17': true},
-    {'1': 'code_word', '3': 12, '4': 1, '5': 9, '9': 6, '10': 'codeWord', '17': true},
+    {'1': 'coins', '3': 13, '4': 1, '5': 1, '10': 'coins'},
+    {'1': 'car_model', '3': 14, '4': 1, '5': 9, '10': 'carModel'},
+    {'1': 'vin_code', '3': 15, '4': 1, '5': 9, '10': 'vinCode'},
+    {'1': 'year_of_manufacture', '3': 16, '4': 1, '5': 5, '10': 'yearOfManufacture'},
+    {'1': 'gos_number', '3': 17, '4': 1, '5': 9, '10': 'gosNumber'},
+    {'1': 'service_logs', '3': 18, '4': 3, '5': 11, '6': '.UserServiceLogDto', '10': 'serviceLogs'},
+    {'1': 'preferences', '3': 19, '4': 1, '5': 9, '10': 'preferences'},
+    {'1': 'code_word', '3': 20, '4': 1, '5': 9, '9': 6, '10': 'codeWord', '17': true},
   ],
   '8': [
     {'1': '_gender'},
@@ -113,9 +120,13 @@ final $typed_data.Uint8List userDtoDescriptor = $convert.base64Decode(
     'dlbmRlckgAUgZnZW5kZXKIAQESFwoEbmFtZRgHIAEoCUgBUgRuYW1liAEBEhkKBXBob25lGAgg'
     'ASgJSAJSBXBob25liAEBEh8KCHRlbGVncmFtGAkgASgJSANSCHRlbGVncmFtiAEBEigKDXJlZ2'
     'lzdGVyX2RhdGUYCiABKAlIBFIMcmVnaXN0ZXJEYXRliAEBEh4KCGdyb3VwX2lkGAsgASgFSAVS'
-    'B2dyb3VwSWSIAQESIAoJY29kZV93b3JkGAwgASgJSAZSCGNvZGVXb3JkiAEBQgkKB19nZW5kZX'
-    'JCBwoFX25hbWVCCAoGX3Bob25lQgsKCV90ZWxlZ3JhbUIQCg5fcmVnaXN0ZXJfZGF0ZUILCglf'
-    'Z3JvdXBfaWRCDAoKX2NvZGVfd29yZA==');
+    'B2dyb3VwSWSIAQESFAoFY29pbnMYDSABKAFSBWNvaW5zEhsKCWNhcl9tb2RlbBgOIAEoCVIIY2'
+    'FyTW9kZWwSGQoIdmluX2NvZGUYDyABKAlSB3ZpbkNvZGUSLgoTeWVhcl9vZl9tYW51ZmFjdHVy'
+    'ZRgQIAEoBVIReWVhck9mTWFudWZhY3R1cmUSHQoKZ29zX251bWJlchgRIAEoCVIJZ29zTnVtYm'
+    'VyEjUKDHNlcnZpY2VfbG9ncxgSIAMoCzISLlVzZXJTZXJ2aWNlTG9nRHRvUgtzZXJ2aWNlTG9n'
+    'cxIgCgtwcmVmZXJlbmNlcxgTIAEoCVILcHJlZmVyZW5jZXMSIAoJY29kZV93b3JkGBQgASgJSA'
+    'ZSCGNvZGVXb3JkiAEBQgkKB19nZW5kZXJCBwoFX25hbWVCCAoGX3Bob25lQgsKCV90ZWxlZ3Jh'
+    'bUIQCg5fcmVnaXN0ZXJfZGF0ZUILCglfZ3JvdXBfaWRCDAoKX2NvZGVfd29yZA==');
 
 @$core.Deprecated('Use tokensDtoDescriptor instead')
 const TokensDto$json = {
@@ -175,4 +186,20 @@ const AppInfoDto$json = {
 /// Descriptor for `AppInfoDto`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List appInfoDtoDescriptor = $convert.base64Decode(
     'CgpBcHBJbmZvRHRvEiEKDGxhc3RfdmVyc2lvbhgBIAEoCVILbGFzdFZlcnNpb24=');
+
+@$core.Deprecated('Use userServiceLogDtoDescriptor instead')
+const UserServiceLogDto$json = {
+  '1': 'UserServiceLogDto',
+  '2': [
+    {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
+    {'1': 'date', '3': 2, '4': 1, '5': 9, '10': 'date'},
+    {'1': 'service_id', '3': 3, '4': 1, '5': 9, '10': 'serviceId'},
+    {'1': 'price', '3': 4, '4': 1, '5': 1, '10': 'price'},
+  ],
+};
+
+/// Descriptor for `UserServiceLogDto`. Decode as a `google.protobuf.DescriptorProto`.
+final $typed_data.Uint8List userServiceLogDtoDescriptor = $convert.base64Decode(
+    'ChFVc2VyU2VydmljZUxvZ0R0bxIOCgJpZBgBIAEoCVICaWQSEgoEZGF0ZRgCIAEoCVIEZGF0ZR'
+    'IdCgpzZXJ2aWNlX2lkGAMgASgJUglzZXJ2aWNlSWQSFAoFcHJpY2UYBCABKAFSBXByaWNl');
 

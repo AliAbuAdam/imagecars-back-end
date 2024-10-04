@@ -105,6 +105,12 @@ class AuthRpc extends AuthRpcServiceBase {
         telegram: request.telegram.isNotEmpty ? request.telegram : null,
         groupId: request.groupId != 0 ? request.groupId : null,
         codeWord: request.hasCodeWord() ? request.codeWord : null,
+        carModel: request.hasCarModel() ? request.carModel : null,
+        vinCode: request.hasVinCode() ? request.vinCode : null,
+        yearOfManufacture:
+            request.hasYearOfManufacture() ? request.yearOfManufacture : null,
+        gosNumber: request.hasGosNumber() ? request.gosNumber : null,
+        preferences: request.hasPreferences() ? request.preferences : null,
       ));
 
       final updatedUser = await db.users.queryFullView(id);
@@ -156,6 +162,7 @@ class AuthRpc extends AuthRpcServiceBase {
             email: request.email,
             groupId: 0,
             registerDate: DateTime.now().toIso8601String(),
+            coins: 0,
           ),
         );
 
