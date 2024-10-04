@@ -23,6 +23,7 @@ abstract class User {
   String? get codeWord;
 
   double get coins;
+  String? get carManufacturer;
   String? get carModel;
   String? get vinCode;
   int? get yearOfManufacture;

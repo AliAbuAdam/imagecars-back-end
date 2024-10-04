@@ -93,12 +93,13 @@ const UserDto$json = {
     {'1': 'register_date', '3': 10, '4': 1, '5': 9, '9': 4, '10': 'registerDate', '17': true},
     {'1': 'group_id', '3': 11, '4': 1, '5': 5, '9': 5, '10': 'groupId', '17': true},
     {'1': 'coins', '3': 13, '4': 1, '5': 1, '10': 'coins'},
-    {'1': 'car_model', '3': 14, '4': 1, '5': 9, '10': 'carModel'},
-    {'1': 'vin_code', '3': 15, '4': 1, '5': 9, '10': 'vinCode'},
-    {'1': 'year_of_manufacture', '3': 16, '4': 1, '5': 5, '10': 'yearOfManufacture'},
-    {'1': 'gos_number', '3': 17, '4': 1, '5': 9, '10': 'gosNumber'},
-    {'1': 'preferences', '3': 19, '4': 1, '5': 9, '10': 'preferences'},
-    {'1': 'code_word', '3': 20, '4': 1, '5': 9, '9': 6, '10': 'codeWord', '17': true},
+    {'1': 'car_manufacturer', '3': 14, '4': 1, '5': 9, '10': 'carManufacturer'},
+    {'1': 'car_model', '3': 15, '4': 1, '5': 9, '10': 'carModel'},
+    {'1': 'vin_code', '3': 16, '4': 1, '5': 9, '10': 'vinCode'},
+    {'1': 'year_of_manufacture', '3': 17, '4': 1, '5': 5, '10': 'yearOfManufacture'},
+    {'1': 'gos_number', '3': 18, '4': 1, '5': 9, '10': 'gosNumber'},
+    {'1': 'preferences', '3': 20, '4': 1, '5': 9, '10': 'preferences'},
+    {'1': 'code_word', '3': 21, '4': 1, '5': 9, '9': 6, '10': 'codeWord', '17': true},
   ],
   '8': [
     {'1': '_gender'},
@@ -119,12 +120,13 @@ final $typed_data.Uint8List userDtoDescriptor = $convert.base64Decode(
     'dlbmRlckgAUgZnZW5kZXKIAQESFwoEbmFtZRgHIAEoCUgBUgRuYW1liAEBEhkKBXBob25lGAgg'
     'ASgJSAJSBXBob25liAEBEh8KCHRlbGVncmFtGAkgASgJSANSCHRlbGVncmFtiAEBEigKDXJlZ2'
     'lzdGVyX2RhdGUYCiABKAlIBFIMcmVnaXN0ZXJEYXRliAEBEh4KCGdyb3VwX2lkGAsgASgFSAVS'
-    'B2dyb3VwSWSIAQESFAoFY29pbnMYDSABKAFSBWNvaW5zEhsKCWNhcl9tb2RlbBgOIAEoCVIIY2'
-    'FyTW9kZWwSGQoIdmluX2NvZGUYDyABKAlSB3ZpbkNvZGUSLgoTeWVhcl9vZl9tYW51ZmFjdHVy'
-    'ZRgQIAEoBVIReWVhck9mTWFudWZhY3R1cmUSHQoKZ29zX251bWJlchgRIAEoCVIJZ29zTnVtYm'
-    'VyEiAKC3ByZWZlcmVuY2VzGBMgASgJUgtwcmVmZXJlbmNlcxIgCgljb2RlX3dvcmQYFCABKAlI'
-    'BlIIY29kZVdvcmSIAQFCCQoHX2dlbmRlckIHCgVfbmFtZUIICgZfcGhvbmVCCwoJX3RlbGVncm'
-    'FtQhAKDl9yZWdpc3Rlcl9kYXRlQgsKCV9ncm91cF9pZEIMCgpfY29kZV93b3Jk');
+    'B2dyb3VwSWSIAQESFAoFY29pbnMYDSABKAFSBWNvaW5zEikKEGNhcl9tYW51ZmFjdHVyZXIYDi'
+    'ABKAlSD2Nhck1hbnVmYWN0dXJlchIbCgljYXJfbW9kZWwYDyABKAlSCGNhck1vZGVsEhkKCHZp'
+    'bl9jb2RlGBAgASgJUgd2aW5Db2RlEi4KE3llYXJfb2ZfbWFudWZhY3R1cmUYESABKAVSEXllYX'
+    'JPZk1hbnVmYWN0dXJlEh0KCmdvc19udW1iZXIYEiABKAlSCWdvc051bWJlchIgCgtwcmVmZXJl'
+    'bmNlcxgUIAEoCVILcHJlZmVyZW5jZXMSIAoJY29kZV93b3JkGBUgASgJSAZSCGNvZGVXb3JkiA'
+    'EBQgkKB19nZW5kZXJCBwoFX25hbWVCCAoGX3Bob25lQgsKCV90ZWxlZ3JhbUIQCg5fcmVnaXN0'
+    'ZXJfZGF0ZUILCglfZ3JvdXBfaWRCDAoKX2NvZGVfd29yZA==');
 
 @$core.Deprecated('Use tokensDtoDescriptor instead')
 const TokensDto$json = {

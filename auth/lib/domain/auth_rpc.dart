@@ -105,6 +105,8 @@ class AuthRpc extends AuthRpcServiceBase {
         telegram: request.telegram.isNotEmpty ? request.telegram : null,
         groupId: request.groupId != 0 ? request.groupId : null,
         codeWord: request.hasCodeWord() ? request.codeWord : null,
+        carManufacturer:
+            request.hasCarManufacturer() ? request.carManufacturer : null,
         carModel: request.hasCarModel() ? request.carModel : null,
         vinCode: request.hasVinCode() ? request.vinCode : null,
         yearOfManufacture:

@@ -247,6 +247,7 @@ class UserDto extends $pb.GeneratedMessage {
     $core.String? registerDate,
     $core.int? groupId,
     $core.double? coins,
+    $core.String? carManufacturer,
     $core.String? carModel,
     $core.String? vinCode,
     $core.int? yearOfManufacture,
@@ -291,6 +292,9 @@ class UserDto extends $pb.GeneratedMessage {
     if (coins != null) {
       $result.coins = coins;
     }
+    if (carManufacturer != null) {
+      $result.carManufacturer = carManufacturer;
+    }
     if (carModel != null) {
       $result.carModel = carModel;
     }
@@ -328,12 +332,13 @@ class UserDto extends $pb.GeneratedMessage {
     ..aOS(10, _omitFieldNames ? '' : 'registerDate')
     ..a<$core.int>(11, _omitFieldNames ? '' : 'groupId', $pb.PbFieldType.O3)
     ..a<$core.double>(13, _omitFieldNames ? '' : 'coins', $pb.PbFieldType.OD)
-    ..aOS(14, _omitFieldNames ? '' : 'carModel')
-    ..aOS(15, _omitFieldNames ? '' : 'vinCode')
-    ..a<$core.int>(16, _omitFieldNames ? '' : 'yearOfManufacture', $pb.PbFieldType.O3)
-    ..aOS(17, _omitFieldNames ? '' : 'gosNumber')
-    ..aOS(19, _omitFieldNames ? '' : 'preferences')
-    ..aOS(20, _omitFieldNames ? '' : 'codeWord')
+    ..aOS(14, _omitFieldNames ? '' : 'carManufacturer')
+    ..aOS(15, _omitFieldNames ? '' : 'carModel')
+    ..aOS(16, _omitFieldNames ? '' : 'vinCode')
+    ..a<$core.int>(17, _omitFieldNames ? '' : 'yearOfManufacture', $pb.PbFieldType.O3)
+    ..aOS(18, _omitFieldNames ? '' : 'gosNumber')
+    ..aOS(20, _omitFieldNames ? '' : 'preferences')
+    ..aOS(21, _omitFieldNames ? '' : 'codeWord')
     ..hasRequiredFields = false
   ;
 
@@ -468,60 +473,69 @@ class UserDto extends $pb.GeneratedMessage {
   void clearCoins() => clearField(13);
 
   @$pb.TagNumber(14)
-  $core.String get carModel => $_getSZ(12);
+  $core.String get carManufacturer => $_getSZ(12);
   @$pb.TagNumber(14)
-  set carModel($core.String v) { $_setString(12, v); }
+  set carManufacturer($core.String v) { $_setString(12, v); }
   @$pb.TagNumber(14)
-  $core.bool hasCarModel() => $_has(12);
+  $core.bool hasCarManufacturer() => $_has(12);
   @$pb.TagNumber(14)
-  void clearCarModel() => clearField(14);
+  void clearCarManufacturer() => clearField(14);
 
   @$pb.TagNumber(15)
-  $core.String get vinCode => $_getSZ(13);
+  $core.String get carModel => $_getSZ(13);
   @$pb.TagNumber(15)
-  set vinCode($core.String v) { $_setString(13, v); }
+  set carModel($core.String v) { $_setString(13, v); }
   @$pb.TagNumber(15)
-  $core.bool hasVinCode() => $_has(13);
+  $core.bool hasCarModel() => $_has(13);
   @$pb.TagNumber(15)
-  void clearVinCode() => clearField(15);
+  void clearCarModel() => clearField(15);
 
   @$pb.TagNumber(16)
-  $core.int get yearOfManufacture => $_getIZ(14);
+  $core.String get vinCode => $_getSZ(14);
   @$pb.TagNumber(16)
-  set yearOfManufacture($core.int v) { $_setSignedInt32(14, v); }
+  set vinCode($core.String v) { $_setString(14, v); }
   @$pb.TagNumber(16)
-  $core.bool hasYearOfManufacture() => $_has(14);
+  $core.bool hasVinCode() => $_has(14);
   @$pb.TagNumber(16)
-  void clearYearOfManufacture() => clearField(16);
+  void clearVinCode() => clearField(16);
 
   @$pb.TagNumber(17)
-  $core.String get gosNumber => $_getSZ(15);
+  $core.int get yearOfManufacture => $_getIZ(15);
   @$pb.TagNumber(17)
-  set gosNumber($core.String v) { $_setString(15, v); }
+  set yearOfManufacture($core.int v) { $_setSignedInt32(15, v); }
   @$pb.TagNumber(17)
-  $core.bool hasGosNumber() => $_has(15);
+  $core.bool hasYearOfManufacture() => $_has(15);
   @$pb.TagNumber(17)
-  void clearGosNumber() => clearField(17);
+  void clearYearOfManufacture() => clearField(17);
 
-  /// repeated UserServiceLogDto service_logs = 18;
-  @$pb.TagNumber(19)
-  $core.String get preferences => $_getSZ(16);
-  @$pb.TagNumber(19)
-  set preferences($core.String v) { $_setString(16, v); }
-  @$pb.TagNumber(19)
-  $core.bool hasPreferences() => $_has(16);
-  @$pb.TagNumber(19)
-  void clearPreferences() => clearField(19);
+  @$pb.TagNumber(18)
+  $core.String get gosNumber => $_getSZ(16);
+  @$pb.TagNumber(18)
+  set gosNumber($core.String v) { $_setString(16, v); }
+  @$pb.TagNumber(18)
+  $core.bool hasGosNumber() => $_has(16);
+  @$pb.TagNumber(18)
+  void clearGosNumber() => clearField(18);
+
+  /// repeated UserServiceLogDto service_logs = 19;
+  @$pb.TagNumber(20)
+  $core.String get preferences => $_getSZ(17);
+  @$pb.TagNumber(20)
+  set preferences($core.String v) { $_setString(17, v); }
+  @$pb.TagNumber(20)
+  $core.bool hasPreferences() => $_has(17);
+  @$pb.TagNumber(20)
+  void clearPreferences() => clearField(20);
 
   /// Private
-  @$pb.TagNumber(20)
-  $core.String get codeWord => $_getSZ(17);
-  @$pb.TagNumber(20)
-  set codeWord($core.String v) { $_setString(17, v); }
-  @$pb.TagNumber(20)
-  $core.bool hasCodeWord() => $_has(17);
-  @$pb.TagNumber(20)
-  void clearCodeWord() => clearField(20);
+  @$pb.TagNumber(21)
+  $core.String get codeWord => $_getSZ(18);
+  @$pb.TagNumber(21)
+  set codeWord($core.String v) { $_setString(18, v); }
+  @$pb.TagNumber(21)
+  $core.bool hasCodeWord() => $_has(18);
+  @$pb.TagNumber(21)
+  void clearCodeWord() => clearField(21);
 }
 
 class TokensDto extends $pb.GeneratedMessage {

@@ -57,15 +57,16 @@ message UserDto {
     optional int32 group_id = 11;
 
     double coins = 13;
-    string car_model = 14;
-    string vin_code = 15;
-    int32 year_of_manufacture = 16;
-    string gos_number = 17;
-    // repeated UserServiceLogDto service_logs = 18;
-    string preferences = 19;
+    string car_manufacturer = 14;
+    string car_model = 15;
+    string vin_code = 16;
+    int32 year_of_manufacture = 17;
+    string gos_number = 18;
+    // repeated UserServiceLogDto service_logs = 19;
+    string preferences = 20;
 
     // Private
-    optional string code_word = 20;
+    optional string code_word = 21;
 }
 
 
