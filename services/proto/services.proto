@@ -24,7 +24,7 @@ message WorkCaseDto {
     string id = 1;
     string title = 2;
     string car_model = 3;
-    string service_id = 4;
+    repeated string service_ids = 4;
     repeated string photos = 5;
     optional string video = 6;
     optional string description = 7;

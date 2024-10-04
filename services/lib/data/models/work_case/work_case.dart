@@ -8,7 +8,7 @@ abstract class WorkCase {
   int get id;
   String get title;
   String get carModel;
-  int get serviceId;
+  List<int> get serviceIds;
   List<String> get photos;
   String? get video;
   String? get description;

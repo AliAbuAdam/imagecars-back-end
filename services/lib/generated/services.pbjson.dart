@@ -51,7 +51,7 @@ const WorkCaseDto$json = {
     {'1': 'id', '3': 1, '4': 1, '5': 9, '10': 'id'},
     {'1': 'title', '3': 2, '4': 1, '5': 9, '10': 'title'},
     {'1': 'car_model', '3': 3, '4': 1, '5': 9, '10': 'carModel'},
-    {'1': 'service_id', '3': 4, '4': 1, '5': 9, '10': 'serviceId'},
+    {'1': 'service_ids', '3': 4, '4': 3, '5': 9, '10': 'serviceIds'},
     {'1': 'photos', '3': 5, '4': 3, '5': 9, '10': 'photos'},
     {'1': 'video', '3': 6, '4': 1, '5': 9, '9': 0, '10': 'video', '17': true},
     {'1': 'description', '3': 7, '4': 1, '5': 9, '9': 1, '10': 'description', '17': true},
@@ -69,12 +69,12 @@ const WorkCaseDto$json = {
 /// Descriptor for `WorkCaseDto`. Decode as a `google.protobuf.DescriptorProto`.
 final $typed_data.Uint8List workCaseDtoDescriptor = $convert.base64Decode(
     'CgtXb3JrQ2FzZUR0bxIOCgJpZBgBIAEoCVICaWQSFAoFdGl0bGUYAiABKAlSBXRpdGxlEhsKCW'
-    'Nhcl9tb2RlbBgDIAEoCVIIY2FyTW9kZWwSHQoKc2VydmljZV9pZBgEIAEoCVIJc2VydmljZUlk'
-    'EhYKBnBob3RvcxgFIAMoCVIGcGhvdG9zEhkKBXZpZGVvGAYgASgJSABSBXZpZGVviAEBEiUKC2'
-    'Rlc2NyaXB0aW9uGAcgASgJSAFSC2Rlc2NyaXB0aW9uiAEBEiQKC21hc3Rlcl9uYW1lGAggASgJ'
-    'SAJSCm1hc3Rlck5hbWWIAQESHwoLd29ya19ob3VyZXMYCSABKAFSCndvcmtIb3VyZXMSFAoFcH'
-    'JpY2UYCiABKAFSBXByaWNlQggKBl92aWRlb0IOCgxfZGVzY3JpcHRpb25CDgoMX21hc3Rlcl9u'
-    'YW1l');
+    'Nhcl9tb2RlbBgDIAEoCVIIY2FyTW9kZWwSHwoLc2VydmljZV9pZHMYBCADKAlSCnNlcnZpY2VJ'
+    'ZHMSFgoGcGhvdG9zGAUgAygJUgZwaG90b3MSGQoFdmlkZW8YBiABKAlIAFIFdmlkZW+IAQESJQ'
+    'oLZGVzY3JpcHRpb24YByABKAlIAVILZGVzY3JpcHRpb26IAQESJAoLbWFzdGVyX25hbWUYCCAB'
+    'KAlIAlIKbWFzdGVyTmFtZYgBARIfCgt3b3JrX2hvdXJlcxgJIAEoAVIKd29ya0hvdXJlcxIUCg'
+    'VwcmljZRgKIAEoAVIFcHJpY2VCCAoGX3ZpZGVvQg4KDF9kZXNjcmlwdGlvbkIOCgxfbWFzdGVy'
+    'X25hbWU=');
 
 @$core.Deprecated('Use listWorkCaseDtoDescriptor instead')
 const ListWorkCaseDto$json = {

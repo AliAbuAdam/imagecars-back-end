@@ -162,7 +162,7 @@ class WorkCaseDto extends $pb.GeneratedMessage {
     $core.String? id,
     $core.String? title,
     $core.String? carModel,
-    $core.String? serviceId,
+    $core.Iterable<$core.String>? serviceIds,
     $core.Iterable<$core.String>? photos,
     $core.String? video,
     $core.String? description,
@@ -180,8 +180,8 @@ class WorkCaseDto extends $pb.GeneratedMessage {
     if (carModel != null) {
       $result.carModel = carModel;
     }
-    if (serviceId != null) {
-      $result.serviceId = serviceId;
+    if (serviceIds != null) {
+      $result.serviceIds.addAll(serviceIds);
     }
     if (photos != null) {
       $result.photos.addAll(photos);
@@ -211,7 +211,7 @@ class WorkCaseDto extends $pb.GeneratedMessage {
     ..aOS(1, _omitFieldNames ? '' : 'id')
     ..aOS(2, _omitFieldNames ? '' : 'title')
     ..aOS(3, _omitFieldNames ? '' : 'carModel')
-    ..aOS(4, _omitFieldNames ? '' : 'serviceId')
+    ..pPS(4, _omitFieldNames ? '' : 'serviceIds')
     ..pPS(5, _omitFieldNames ? '' : 'photos')
     ..aOS(6, _omitFieldNames ? '' : 'video')
     ..aOS(7, _omitFieldNames ? '' : 'description')
@@ -270,13 +270,7 @@ class WorkCaseDto extends $pb.GeneratedMessage {
   void clearCarModel() => clearField(3);
 
   @$pb.TagNumber(4)
-  $core.String get serviceId => $_getSZ(3);
-  @$pb.TagNumber(4)
-  set serviceId($core.String v) { $_setString(3, v); }
-  @$pb.TagNumber(4)
-  $core.bool hasServiceId() => $_has(3);
-  @$pb.TagNumber(4)
-  void clearServiceId() => clearField(4);
+  $core.List<$core.String> get serviceIds => $_getList(3);
 
   @$pb.TagNumber(5)
   $core.List<$core.String> get photos => $_getList(4);
