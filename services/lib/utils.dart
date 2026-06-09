@@ -20,6 +20,51 @@ abstract class Utils {
     return getIdFromToken(accessToken);
   }
 
+  // === Валидация (сервер — источник правды) ===
+
+  // Обрезает пробелы и проверяет длину [min, max], иначе INVALID_ARGUMENT.
+  static String requireLength(String value, String field, int min, int max) {
+    final trimmed = value.trim();
+    if (trimmed.length < min || trimmed.length > max) {
+      throw GrpcError.invalidArgument(
+        '$field must be between $min and $max characters',
+      );
+    }
+    return trimmed;
+  }
+
+  // Проверяет, что число >= 0.
+  static double requireNonNegative(double value, String field) {
+    if (value.isNaN || value < 0) {
+      throw GrpcError.invalidArgument('$field must be >= 0');
+    }
+    return value;
+  }
+
+  // Проверяет валидность http(s)-URL.
+  static String requireUrl(String value, String field) {
+    final uri = Uri.tryParse(value);
+    if (uri == null ||
+        !uri.hasScheme ||
+        (uri.scheme != 'http' && uri.scheme != 'https') ||
+        !uri.hasAuthority) {
+      throw GrpcError.invalidArgument('$field must be a valid http(s) URL');
+    }
+    return value;
+  }
+
+  // Проверяет список URL.
+  static List<String> requireUrls(List<String> values, String field) {
+    return values.map((v) => requireUrl(v, field)).toList();
+  }
+
+  // Парсит id (string -> int), иначе INVALID_ARGUMENT.
+  static int requireId(String value, String field) {
+    final id = int.tryParse(value.trim());
+    if (id == null) throw GrpcError.invalidArgument('$field is invalid');
+    return id;
+  }
+
   // Parse list service dto
   static ListServiceDto parseListService(List<ServiceView> list) {
     final services = list.map(

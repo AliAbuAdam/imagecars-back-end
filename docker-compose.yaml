@@ -43,6 +43,7 @@ services:
     build: ./services
     depends_on:
       - db_services
+      - auth
     networks:
       - server_net
     environment:
@@ -53,6 +54,7 @@ services:
       DB_USERNAME: ${db_user_services}
       DB_PASSWORD: ${db_password_services}
       DB_SSL: ${db_use_ssl}
+      AUTH_HOST: auth
       AUTH_PORT: ${auth_port}
       TZ: ${container_timezone}
 

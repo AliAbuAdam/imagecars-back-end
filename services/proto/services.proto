@@ -5,6 +5,16 @@ service ServicesRpc {
     rpc FetchAllServices (RequestDto) returns (ListServiceDto);
     rpc FetchWorkCase (WorkCaseDto) returns (WorkCaseDto);
     rpc FetchAllWorkCases (RequestDto) returns (ListWorkCaseDto);
+
+    // Услуги (только для админов, groupId == 88)
+    rpc CreateService (ServiceDto) returns (ServiceDto);   // id на входе пустой, сервер присваивает
+    rpc UpdateService (ServiceDto) returns (ServiceDto);   // id обязателен
+    rpc DeleteService (ServiceDto) returns (ResponseDto);  // достаточно id
+
+    // Кейсы (только для админов, groupId == 88)
+    rpc CreateWorkCase (WorkCaseDto) returns (WorkCaseDto); // id на входе пустой
+    rpc UpdateWorkCase (WorkCaseDto) returns (WorkCaseDto); // id обязателен
+    rpc DeleteWorkCase (WorkCaseDto) returns (ResponseDto); // достаточно id
 }
 
 message ServiceDto {

@@ -37,6 +37,30 @@ class ServicesRpcClient extends $grpc.Client {
       '/ServicesRpc/FetchAllWorkCases',
       ($0.RequestDto value) => value.writeToBuffer(),
       ($core.List<$core.int> value) => $0.ListWorkCaseDto.fromBuffer(value));
+  static final _$createService = $grpc.ClientMethod<$0.ServiceDto, $0.ServiceDto>(
+      '/ServicesRpc/CreateService',
+      ($0.ServiceDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ServiceDto.fromBuffer(value));
+  static final _$updateService = $grpc.ClientMethod<$0.ServiceDto, $0.ServiceDto>(
+      '/ServicesRpc/UpdateService',
+      ($0.ServiceDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ServiceDto.fromBuffer(value));
+  static final _$deleteService = $grpc.ClientMethod<$0.ServiceDto, $0.ResponseDto>(
+      '/ServicesRpc/DeleteService',
+      ($0.ServiceDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ResponseDto.fromBuffer(value));
+  static final _$createWorkCase = $grpc.ClientMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+      '/ServicesRpc/CreateWorkCase',
+      ($0.WorkCaseDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value));
+  static final _$updateWorkCase = $grpc.ClientMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+      '/ServicesRpc/UpdateWorkCase',
+      ($0.WorkCaseDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value));
+  static final _$deleteWorkCase = $grpc.ClientMethod<$0.WorkCaseDto, $0.ResponseDto>(
+      '/ServicesRpc/DeleteWorkCase',
+      ($0.WorkCaseDto value) => value.writeToBuffer(),
+      ($core.List<$core.int> value) => $0.ResponseDto.fromBuffer(value));
 
   ServicesRpcClient($grpc.ClientChannel channel,
       {$grpc.CallOptions? options,
@@ -58,6 +82,30 @@ class ServicesRpcClient extends $grpc.Client {
 
   $grpc.ResponseFuture<$0.ListWorkCaseDto> fetchAllWorkCases($0.RequestDto request, {$grpc.CallOptions? options}) {
     return $createUnaryCall(_$fetchAllWorkCases, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ServiceDto> createService($0.ServiceDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$createService, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ServiceDto> updateService($0.ServiceDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateService, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ResponseDto> deleteService($0.ServiceDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteService, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.WorkCaseDto> createWorkCase($0.WorkCaseDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$createWorkCase, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.WorkCaseDto> updateWorkCase($0.WorkCaseDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$updateWorkCase, request, options: options);
+  }
+
+  $grpc.ResponseFuture<$0.ResponseDto> deleteWorkCase($0.WorkCaseDto request, {$grpc.CallOptions? options}) {
+    return $createUnaryCall(_$deleteWorkCase, request, options: options);
   }
 }
 
@@ -94,6 +142,48 @@ abstract class ServicesRpcServiceBase extends $grpc.Service {
         false,
         ($core.List<$core.int> value) => $0.RequestDto.fromBuffer(value),
         ($0.ListWorkCaseDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ServiceDto, $0.ServiceDto>(
+        'CreateService',
+        createService_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.ServiceDto.fromBuffer(value),
+        ($0.ServiceDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ServiceDto, $0.ServiceDto>(
+        'UpdateService',
+        updateService_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.ServiceDto.fromBuffer(value),
+        ($0.ServiceDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.ServiceDto, $0.ResponseDto>(
+        'DeleteService',
+        deleteService_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.ServiceDto.fromBuffer(value),
+        ($0.ResponseDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+        'CreateWorkCase',
+        createWorkCase_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value),
+        ($0.WorkCaseDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.WorkCaseDto, $0.WorkCaseDto>(
+        'UpdateWorkCase',
+        updateWorkCase_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value),
+        ($0.WorkCaseDto value) => value.writeToBuffer()));
+    $addMethod($grpc.ServiceMethod<$0.WorkCaseDto, $0.ResponseDto>(
+        'DeleteWorkCase',
+        deleteWorkCase_Pre,
+        false,
+        false,
+        ($core.List<$core.int> value) => $0.WorkCaseDto.fromBuffer(value),
+        ($0.ResponseDto value) => value.writeToBuffer()));
   }
 
   $async.Future<$0.ServiceDto> fetchService_Pre($grpc.ServiceCall call, $async.Future<$0.ServiceDto> request) async {
@@ -112,8 +202,38 @@ abstract class ServicesRpcServiceBase extends $grpc.Service {
     return fetchAllWorkCases(call, await request);
   }
 
+  $async.Future<$0.ServiceDto> createService_Pre($grpc.ServiceCall call, $async.Future<$0.ServiceDto> request) async {
+    return createService(call, await request);
+  }
+
+  $async.Future<$0.ServiceDto> updateService_Pre($grpc.ServiceCall call, $async.Future<$0.ServiceDto> request) async {
+    return updateService(call, await request);
+  }
+
+  $async.Future<$0.ResponseDto> deleteService_Pre($grpc.ServiceCall call, $async.Future<$0.ServiceDto> request) async {
+    return deleteService(call, await request);
+  }
+
+  $async.Future<$0.WorkCaseDto> createWorkCase_Pre($grpc.ServiceCall call, $async.Future<$0.WorkCaseDto> request) async {
+    return createWorkCase(call, await request);
+  }
+
+  $async.Future<$0.WorkCaseDto> updateWorkCase_Pre($grpc.ServiceCall call, $async.Future<$0.WorkCaseDto> request) async {
+    return updateWorkCase(call, await request);
+  }
+
+  $async.Future<$0.ResponseDto> deleteWorkCase_Pre($grpc.ServiceCall call, $async.Future<$0.WorkCaseDto> request) async {
+    return deleteWorkCase(call, await request);
+  }
+
   $async.Future<$0.ServiceDto> fetchService($grpc.ServiceCall call, $0.ServiceDto request);
   $async.Future<$0.ListServiceDto> fetchAllServices($grpc.ServiceCall call, $0.RequestDto request);
   $async.Future<$0.WorkCaseDto> fetchWorkCase($grpc.ServiceCall call, $0.WorkCaseDto request);
   $async.Future<$0.ListWorkCaseDto> fetchAllWorkCases($grpc.ServiceCall call, $0.RequestDto request);
+  $async.Future<$0.ServiceDto> createService($grpc.ServiceCall call, $0.ServiceDto request);
+  $async.Future<$0.ServiceDto> updateService($grpc.ServiceCall call, $0.ServiceDto request);
+  $async.Future<$0.ResponseDto> deleteService($grpc.ServiceCall call, $0.ServiceDto request);
+  $async.Future<$0.WorkCaseDto> createWorkCase($grpc.ServiceCall call, $0.WorkCaseDto request);
+  $async.Future<$0.WorkCaseDto> updateWorkCase($grpc.ServiceCall call, $0.WorkCaseDto request);
+  $async.Future<$0.ResponseDto> deleteWorkCase($grpc.ServiceCall call, $0.WorkCaseDto request);
 }
