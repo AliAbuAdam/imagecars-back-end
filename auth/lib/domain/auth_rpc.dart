@@ -56,13 +56,12 @@ class AuthRpc extends AuthRpcServiceBase {
   ) async {
     final limit = int.tryParse(request.limit) ?? 100;
     final offset = int.tryParse(request.offset) ?? 0;
-    final key = request.groupKey;
-    final query = "group_id=$key";
     final listUsers = await db.users.queryShortViews(QueryParams(
       limit: limit,
       offset: offset,
       orderBy: 'username',
-      where: query,
+      where: 'group_id = @group_id',
+      values: {'group_id': request.groupKey},
     ));
     return await Isolate.run(() => Utils.parseUsers(listUsers));
   }
@@ -151,7 +150,8 @@ class AuthRpc extends AuthRpcServiceBase {
     final users = await db.users.queryFullViews(
       QueryParams(
         limit: 1,
-        where: "email='${request.email}'",
+        where: 'email = @email',
+        values: {'email': request.email},
       ),
     );
 

@@ -42,40 +42,78 @@ abstract class Utils {
     return getIdFromToken(accessToken);
   }
 
-  // Конвертация в FullUserDto
-  static UserDto parseUser(FullUserView view) {
+  // Сборка UserDto из общих полей view.
+  // groupId/codeWord передаются явно: codeWord помечен как приватный в proto,
+  // поэтому короткий (неавторизованный) view их не отдаёт.
+  static UserDto _buildUserDto({
+    required int id,
+    required String username,
+    required String email,
+    String? gender,
+    String? name,
+    String? registerDate,
+    int? groupId,
+    String? telegram,
+    String? phone,
+    String? codeWord,
+    required double coins,
+    String? carManufacturer,
+    String? carModel,
+    String? vinCode,
+    int? yearOfManufacture,
+    String? gosNumber,
+    String? preferences,
+  }) {
     return UserDto(
-      id: view.id.toString(),
-      username: view.username,
-      email: view.email,
-      gender: view.gender != null
-          ? Gender.values.firstWhere((element) => element.name == view.gender)
+      id: id.toString(),
+      username: username,
+      email: email,
+      gender: gender != null
+          ? Gender.values.firstWhere((element) => element.name == gender)
           : null,
-      name: view.name,
-      registerDate: view.registerDate,
-      groupId: view.groupId,
-      telegram: view.telegram,
-      phone: view.phone,
-      codeWord: view.codeWord,
-      coins: view.coins,
-      carManufacturer: view.carManufacturer,
-      carModel: view.carModel,
-      vinCode: view.vinCode,
-      yearOfManufacture: view.yearOfManufacture,
-      gosNumber: view.gosNumber,
-      // serviceLogs: parseListUserServiceLog(view.serviceLogs),
-      preferences: view.preferences,
+      name: name,
+      registerDate: registerDate,
+      groupId: groupId,
+      telegram: telegram,
+      phone: phone,
+      codeWord: codeWord,
+      coins: coins,
+      carManufacturer: carManufacturer,
+      carModel: carModel,
+      vinCode: vinCode,
+      yearOfManufacture: yearOfManufacture,
+      gosNumber: gosNumber,
+      preferences: preferences,
     );
   }
 
-  // Конвертация в ShortUserDto
-  static UserDto parseShortUser(ShortUserView view) => UserDto(
-        id: view.id.toString(),
+  // Конвертация в полный UserDto (с groupId и приватным codeWord)
+  static UserDto parseUser(FullUserView view) => _buildUserDto(
+        id: view.id,
         username: view.username,
         email: view.email,
-        gender: view.gender != null
-            ? Gender.values.firstWhere((element) => element.name == view.gender)
-            : null,
+        gender: view.gender,
+        name: view.name,
+        registerDate: view.registerDate,
+        groupId: view.groupId,
+        telegram: view.telegram,
+        phone: view.phone,
+        codeWord: view.codeWord,
+        coins: view.coins,
+        carManufacturer: view.carManufacturer,
+        carModel: view.carModel,
+        vinCode: view.vinCode,
+        yearOfManufacture: view.yearOfManufacture,
+        gosNumber: view.gosNumber,
+        preferences: view.preferences,
+      );
+
+  // Конвертация в короткий UserDto (без groupId/codeWord)
+  static UserDto parseShortUser(ShortUserView view) => _buildUserDto(
+        id: view.id,
+        username: view.username,
+        email: view.email,
+        gender: view.gender,
         name: view.name,
         registerDate: view.registerDate,
         telegram: view.telegram,
@@ -86,45 +124,40 @@ abstract class Utils {
         vinCode: view.vinCode,
         yearOfManufacture: view.yearOfManufacture,
         gosNumber: view.gosNumber,
-        // serviceLogs: parseListUserServiceLog(view.serviceLogs),
         preferences: view.preferences,
       );
 
-  // Конвертация в ListUserDto
+  // Конвертация в ListUserDto (с groupId и codeWord, как и раньше)
   static ListUserDto parseUsers(List<ShortUserView> listView) {
     try {
-      print('Parse users test');
-      return ListUserDto(users: [
-        ...listView.map(
-          (view) => UserDto(
-            id: view.id.toString(),
-            username: view.username,
-            email: view.email,
-            gender: view.gender != null
-                ? Gender.values
-                    .firstWhere((element) => element.name == view.gender)
-                : null,
-            name: view.name,
-            registerDate: view.registerDate,
-            groupId: view.groupId,
-            telegram: view.telegram,
-            phone: view.phone,
-            codeWord: view.codeWord,
-            coins: view.coins,
-            carManufacturer: view.carManufacturer,
-            carModel: view.carModel,
-            vinCode: view.vinCode,
-            yearOfManufacture: view.yearOfManufacture,
-            gosNumber: view.gosNumber,
-            // serviceLogs: parseListUserServiceLog(view.serviceLogs),
-            preferences: view.preferences,
-          ),
-        )
-      ]);
+      return ListUserDto(
+        users: listView.map(parseUserFromShortView).toList(),
+      );
     } catch (e) {
       throw GrpcError.internal('Error in parseUsers ${e.toString()}');
     }
   }
+
+  // Короткий view -> полный UserDto (с groupId/codeWord)
+  static UserDto parseUserFromShortView(ShortUserView view) => _buildUserDto(
+        id: view.id,
+        username: view.username,
+        email: view.email,
+        gender: view.gender,
+        name: view.name,
+        registerDate: view.registerDate,
+        groupId: view.groupId,
+        telegram: view.telegram,
+        phone: view.phone,
+        codeWord: view.codeWord,
+        coins: view.coins,
+        carManufacturer: view.carManufacturer,
+        carModel: view.carModel,
+        vinCode: view.vinCode,
+        yearOfManufacture: view.yearOfManufacture,
+        gosNumber: view.gosNumber,
+        preferences: view.preferences,
+      );
 
   static UserServiceLogDto parseUserServiceLog(UserServiceLogView view) {
     return UserServiceLogDto(

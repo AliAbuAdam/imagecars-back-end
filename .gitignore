@@ -1,0 +1,12 @@
+# Secrets / local env
+.env
+.env.local
+
+# Dart
+.dart_tool/
+.packages
+build/
+
+# OS junk
+.DS_Store
+**/.DS_Store
